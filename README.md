@@ -15,6 +15,9 @@ java 提供了以下两个接口给上层应用使用：
 驱动程序提供了打开设备， 设置设备， 关闭设备的功能。
 
 ## 2 apk签名文件
+
+配置文件：Androidmanifest.xml 需要添加为系统应用，<!--android:sharedUserId="android.uid.system"-->。否则系统签名无效。
+
 由于访问串口， 程序必须有系统权限。 
 编译有系统权限的apk需要提供android系统平台的密钥。密钥文件存储在build/target/product/security/下面的platform.pk8和platform.x509.pem。
 android studio给apk签名时需要key store文件， 所以需要根据密钥文件产生key store文件。
