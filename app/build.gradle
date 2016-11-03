@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
+
+    sourceSets.main {
+        jni.srcDirs 'src/main/jni'
+    }
+
+    defaultConfig {
+        applicationId "com.ahport.ahport"
+        minSdkVersion 19
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            moduleName "libsafone_com"
+            abiFilters "armeabi"
+        }
+    }
+    signingConfigs {
+        key_ah100 {
+            storeFile file("key_ah100/yytkeysystem.jks")
+            storePassword "123456"
+            keyAlias "yytkey"
+            keyPassword "123456"
+        }
+
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.key_ah100
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.key_ah100
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/jni/Android.mk'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    testCompile 'junit:junit:4.12'
+}
