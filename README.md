@@ -16,15 +16,20 @@ java 提供了以下两个接口给上层应用使用：
 
 ## 2 apk签名文件
 
-配置文件：Androidmanifest.xml 需要添加为系统应用，<!--android:sharedUserId="android.uid.system"-->。否则系统签名无效。
+1. 由于访问串口， 程序必须有系统权限。
 
-由于访问串口， 程序必须有系统权限。 
-编译有系统权限的apk需要提供android系统平台的密钥。密钥文件存储在build/target/product/security/下面的platform.pk8和platform.x509.pem。
-android studio给apk签名时需要key store文件， 所以需要根据密钥文件产生key store文件。
-为了编译方便， 在git源码的app/key_ah100路径下保存了key store文件： yytkeysystem.jks. 密码为123456.
-查考生成系统签名文章：http://blog.csdn.net/zhixuan322145/article/details/51277921 -非常感谢作者。
-资源文件见根目录下:single.zip
+2. 配置文件：Androidmanifest.xml 需要添加为系统应用，<!--android:sharedUserId="android.uid.system"-->。否则系统签名无效。
 
-PC端测试工具可以使用:Serial Port Utility.见百度
+3. 编译有系统权限的apk需要提供android系统平台的密钥。密钥文件存储在build/target/product/security/下面的platform.pk8和platform.x509.pem。
 
-联系QQ：2511575099.
+4. android studio给apk签名时需要key store文件， 所以需要根据密钥文件产生key store文件。
+
+5. 为了编译方便， 在git源码的app/key_ah100路径下保存了key store文件： yytkeysystem.jks. 密码为123456.
+
+6. 参考生成系统签名文章：http://blog.csdn.net/zhixuan322145/article/details/51277921 -非常感谢作者。
+
+7. 资源文件见根目录下:single.zip
+
+8. PC端测试工具可以使用:Serial Port Utility.见百度
+
+## 联系QQ：2511575099.
